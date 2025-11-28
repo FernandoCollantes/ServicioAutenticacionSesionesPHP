@@ -57,143 +57,59 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Sistema de Autenticación</title>
-    <style>
-        /* Estilos básicos para el formulario */
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        
-        .login-container {
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            width: 100%;
-            max-width: 400px;
-        }
-        
-        h2 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 30px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 5px;
-            color: #555;
-            font-weight: bold;
-        }
-        
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
-            box-sizing: border-box;
-            transition: border-color 0.3s;
-        }
-        
-        input[type="text"]:focus,
-        input[type="password"]:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-        
-        button {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        
-        button:hover {
-            transform: translateY(-2px);
-        }
-        
-        .error {
-            background: #fee;
-            color: #c33;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            border-left: 4px solid #c33;
-        }
-        
-        .info {
-            background: #e3f2fd;
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 20px;
-            font-size: 12px;
-            color: #1976d2;
-        }
-    </style>
+    <!-- ENLACE AL CSS EXTERNO -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="login-container">
-        <h2>Iniciar Sesión</h2>
-        
-        <!-- Mostrar mensaje de error si existe -->
-        <?php if ($error): ?>
-            <div class="error"><?php echo htmlspecialchars($error); ?></div>
-        <?php endif; ?>
-        
-        <!-- FORMULARIO DE LOGIN -->
-        <!-- action="" envía al mismo archivo, method="POST" para enviar datos de forma segura -->
-        <form method="POST" action="">
+    <!-- Contenedor centrado -->
+    <div class="center-container">
+        <div class="form-box">
+            <h2>Iniciar Sesión</h2>
             
-            <div class="form-group">
-                <label for="usuario">Usuario:</label>
-                <input 
-                    type="text" 
-                    id="usuario" 
-                    name="usuario" 
-                    required 
-                    placeholder="Ingresa tu usuario"
-                    autocomplete="username"
-                >
+            <!-- Mostrar mensaje de error si existe -->
+            <?php if ($error): ?>
+                <div class="alert-error">
+                    <strong>Error:</strong> <?php echo htmlspecialchars($error); ?>
+                </div>
+            <?php endif; ?>
+            
+            <!-- FORMULARIO DE LOGIN -->
+            <form method="POST" action="">
+                
+                <div class="form-group">
+                    <label for="usuario">Usuario:</label>
+                    <input 
+                        type="text" 
+                        id="usuario" 
+                        name="usuario" 
+                        required 
+                        placeholder="Ingresa tu usuario"
+                        autocomplete="username"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="contrasena">Contraseña:</label>
+                    <input 
+                        type="password" 
+                        id="contrasena" 
+                        name="contrasena" 
+                        required 
+                        placeholder="Ingresa tu contraseña"
+                        autocomplete="current-password"
+                    >
+                </div>
+                
+                <button type="submit" class="btn-primary">Ingresar</button>
+            </form>
+            
+            <!-- Información de usuarios de prueba -->
+            <div class="alert-info">
+                <strong>Usuarios de prueba:</strong><br>
+                • <code>admin</code> / <code>1234</code><br>
+                • <code>usuario</code> / <code>abcd</code><br>
+                • <code>carlos</code> / <code>php2024</code>
             </div>
-            
-            <div class="form-group">
-                <label for="contrasena">Contraseña:</label>
-                <input 
-                    type="password" 
-                    id="contrasena" 
-                    name="contrasena" 
-                    required 
-                    placeholder="Ingresa tu contraseña"
-                    autocomplete="current-password"
-                >
-            </div>
-            
-            <button type="submit">Ingresar</button>
-        </form>
-        
-        <!-- Información de usuarios de prueba -->
-        <div class="info">
-            <strong>Usuarios de prueba:</strong><br>
-            • admin / 1234<br>
-            • usuario / abcd<br>
-            • carlos / php2024
         </div>
     </div>
 </body>
