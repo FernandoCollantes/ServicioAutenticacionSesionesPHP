@@ -1,0 +1,347 @@
+// ================================================
+// ESTILOS BASE - FUNDAMENTOS DEL SISTEMA
+// Reset, tipografía, elementos HTML básicos
+// ================================================
+
+// ================================================
+// RESET UNIVERSAL
+// Elimina márgenes y padding por defecto del navegador
+// ================================================
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// ================================================
+// BODY - CONFIGURACIÓN GLOBAL
+// ================================================
+
+html {
+  // Mejora la renderización de fuentes
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  // Scroll suave
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-base;
+  font-weight: $font-normal;
+  line-height: $line-height-normal;
+  color: $text-dark;
+  
+  // Fondo con gradiente usando nuestros colores
+  @include gradient($color-primary, $color-secondary);
+  
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  
+  // Prevenir selección de texto en elementos interactivos
+  -webkit-tap-highlight-color: transparent;
+}
+
+// ================================================
+// TIPOGRAFÍA BASE
+// ================================================
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: $font-semibold;
+  line-height: $line-height-tight;
+  color: $text-dark;
+  margin-bottom: $spacing-md;
+}
+
+h1 {
+  font-size: $font-3xl;
+  
+  @include responsive('md') {
+    font-size: $font-2xl;
+  }
+}
+
+h2 {
+  font-size: $font-2xl;
+  
+  @include responsive('md') {
+    font-size: $font-xl;
+  }
+}
+
+h3 {
+  font-size: $font-xl;
+  
+  @include responsive('md') {
+    font-size: $font-lg;
+  }
+}
+
+h4 {
+  font-size: $font-lg;
+}
+
+h5 {
+  font-size: $font-base;
+}
+
+h6 {
+  font-size: $font-sm;
+}
+
+// ================================================
+// PÁRRAFOS Y TEXTO
+// ================================================
+
+p {
+  margin-bottom: $spacing-md;
+  line-height: $line-height-relaxed;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Texto pequeño
+small {
+  font-size: $font-sm;
+  color: $text-light;
+}
+
+// Texto en negrita
+strong,
+b {
+  font-weight: $font-bold;
+  color: $text-dark;
+}
+
+// Texto en cursiva
+em,
+i {
+  font-style: italic;
+}
+
+// Código inline
+code {
+  font-family: $font-family-mono;
+  font-size: $font-sm;
+  padding: 2px 6px;
+  background: $bg-light;
+  border-radius: $radius-sm;
+  color: $color-primary;
+  border: 1px solid $border-light;
+}
+
+// ================================================
+// ENLACES
+// ================================================
+
+a {
+  color: $color-primary;
+  text-decoration: none;
+  @include transition(color);
+  
+  &:hover {
+    color: $primary-dark;
+    text-decoration: underline;
+  }
+  
+  &:focus {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+  
+  // Enlaces dentro de párrafos
+  p & {
+    text-decoration: underline;
+    
+    &:hover {
+      color: $primary-dark;
+    }
+  }
+}
+
+// ================================================
+// LISTAS
+// ================================================
+
+ul, ol {
+  margin-left: $spacing-lg;
+  margin-bottom: $spacing-md;
+  
+  li {
+    margin-bottom: $spacing-xs;
+    line-height: $line-height-relaxed;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Listas sin estilo (para navegación, etc)
+.list-unstyled {
+  @include reset-list;
+}
+
+// ================================================
+// IMÁGENES Y MEDIA
+// ================================================
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+// ================================================
+// FORMULARIOS BASE
+// (Los estilos detallados están en _components.scss)
+// ================================================
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+// Remover estilos por defecto de botones
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+// ================================================
+// TABLAS
+// ================================================
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: $spacing-lg;
+  
+  th,
+  td {
+    padding: $spacing-sm $spacing-md;
+    text-align: left;
+    border-bottom: 1px solid $border-light;
+  }
+  
+  th {
+    font-weight: $font-semibold;
+    color: $text-medium;
+    background: $bg-light;
+  }
+  
+  tbody tr {
+    @include transition(background);
+    
+    &:hover {
+      background: $bg-lighter;
+    }
+  }
+}
+
+// ================================================
+// REGLA HORIZONTAL
+// ================================================
+
+hr {
+  border: none;
+  border-top: 1px solid $border-light;
+  margin: $spacing-xl 0;
+}
+
+// ================================================
+// SELECTION (texto seleccionado)
+// ================================================
+
+::selection {
+  background: rgba($color-primary, 0.2);
+  color: $text-dark;
+}
+
+::-moz-selection {
+  background: rgba($color-primary, 0.2);
+  color: $text-dark;
+}
+
+// ================================================
+// SCROLLBAR PERSONALIZADA (solo para Webkit)
+// ================================================
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: $bg-light;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $color-secondary;
+  border-radius: $radius-sm;
+  
+  &:hover {
+    background: $color-primary;
+  }
+}
+
+// ================================================
+// FOCUS VISIBLE (Accesibilidad)
+// Muestra outline solo cuando se navega con teclado
+// ================================================
+
+:focus-visible {
+  outline: 2px solid $color-primary;
+  outline-offset: 2px;
+}
+
+// ================================================
+// ESTADOS INTERACTIVOS GLOBALES
+// ================================================
+
+// Elementos deshabilitados
+[disabled],
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+// Elementos ocultos
+.hidden {
+  display: none !important;
+}
+
+// Visualmente oculto pero accesible para lectores de pantalla
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

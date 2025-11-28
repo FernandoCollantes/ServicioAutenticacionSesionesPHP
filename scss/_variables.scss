@@ -1,0 +1,173 @@
+// ================================================
+// VARIABLES SCSS - SISTEMA DE AUTENTICACIÓN
+// ================================================
+
+// ================================================
+// PALETA DE COLORES PRINCIPAL (3 COLORES)
+// Basada en Psicología del Color: Cálido y Acogedor
+// ================================================
+
+// COLOR PRIMARIO - Naranja (Energía, Entusiasmo)
+// Usado para: Botones principales, headers, elementos destacados
+$color-primary: #f97316;
+
+// COLOR SECUNDARIO - Coral (Calidez, Acogedor)  
+// Usado para: Botones secundarios, hover effects, acentos
+$color-secondary: #fb923c;
+
+// COLOR NEUTRAL - Terracota (Estabilidad, Seguridad)
+// Usado para: Estados de peligro, alertas importantes, logout
+$color-neutral: #ea580c;
+
+// ================================================
+// VARIACIONES AUTOMÁTICAS DE LOS 3 COLORES
+// SCSS nos permite generar tonos claros y oscuros automáticamente
+// ================================================
+
+// Variaciones del color primario
+$primary-light: lighten($color-primary, 10%);    // Más claro 10%
+$primary-lighter: lighten($color-primary, 20%);  // Más claro 20%
+$primary-dark: darken($color-primary, 10%);      // Más oscuro 10%
+$primary-darker: darken($color-primary, 20%);    // Más oscuro 20%
+
+// Variaciones del color secundario
+$secondary-light: lighten($color-secondary, 10%);
+$secondary-lighter: lighten($color-secondary, 20%);
+$secondary-dark: darken($color-secondary, 10%);
+$secondary-darker: darken($color-secondary, 20%);
+
+// Variaciones del color neutral (para fondos y bordes)
+$neutral-light: lighten($color-neutral, 40%);
+$neutral-lighter: lighten($color-neutral, 50%);
+$neutral-dark: darken($color-neutral, 10%);
+
+// ================================================
+// COLORES FUNCIONALES
+// Generados a partir de los 3 colores base
+// ================================================
+
+$color-success: #10b981;     // Verde - Mantener para estados positivos
+$color-warning: $color-secondary;  // Usamos nuestro coral para advertencias
+$color-danger: $color-neutral;     // Usamos terracota para peligro/eliminar
+$color-info: $color-primary;       // Usamos naranja para información
+
+// ================================================
+// ESCALA DE GRISES
+// Para textos, bordes y fondos neutrales
+// ================================================
+
+$gray-900: #1f2937;  // Textos principales
+$gray-700: #374151;  // Textos secundarios
+$gray-500: #6b7280;  // Textos desactivados
+$gray-300: #d1d5db;  // Bordes
+$gray-100: #f3f4f6;  // Fondos claros
+$gray-50: #f9fafb;   // Fondos muy claros
+
+// Colores de texto basados en la escala de grises
+$text-dark: $gray-900;
+$text-medium: $gray-700;
+$text-light: $gray-500;
+
+// ================================================
+// COLORES DE FONDO
+// ================================================
+
+$bg-white: #ffffff;
+$bg-light: $gray-100;
+$bg-lighter: $gray-50;
+$bg-error: #fee2e2;
+$bg-warning: #fef3c7;
+$bg-info: #ffedd5;  // Tono naranja claro para información
+
+// ================================================
+// BORDES
+// ================================================
+
+$border-color: $gray-300;
+$border-light: $gray-100;
+$border-primary: $color-primary;
+
+// ================================================
+// SOMBRAS
+// Generamos sombras con opacidad de nuestro color primario
+// ================================================
+
+$shadow-sm: 0 2px 5px rgba(#000, 0.1);
+$shadow-md: 0 5px 15px rgba($color-primary, 0.15);  // Sombra con tinte naranja
+$shadow-lg: 0 10px 30px rgba($color-primary, 0.2);  // Sombra más intensa
+$shadow-xl: 0 20px 40px rgba($color-primary, 0.25);
+
+// ================================================
+// ESPACIADO (Sistema de 4px)
+// ================================================
+
+$spacing-xs: 0.25rem;  // 4px
+$spacing-sm: 0.5rem;   // 8px
+$spacing-md: 1rem;     // 16px
+$spacing-lg: 1.5rem;   // 24px
+$spacing-xl: 2rem;     // 32px
+$spacing-2xl: 2.5rem;  // 40px
+$spacing-3xl: 3rem;    // 48px
+
+// ================================================
+// RADIOS DE BORDE
+// ================================================
+
+$radius-sm: 0.375rem;  // 6px
+$radius-md: 0.5rem;    // 8px
+$radius-lg: 0.75rem;   // 12px
+$radius-xl: 1rem;      // 16px
+$radius-full: 9999px;  // Completamente redondeado
+
+// ================================================
+// TIPOGRAFÍA
+// ================================================
+
+$font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+$font-family-mono: 'Courier New', Courier, monospace;
+
+// Tamaños de fuente
+$font-xs: 0.75rem;    // 12px
+$font-sm: 0.875rem;   // 14px
+$font-base: 1rem;     // 16px
+$font-lg: 1.125rem;   // 18px
+$font-xl: 1.25rem;    // 20px
+$font-2xl: 1.5rem;    // 24px
+$font-3xl: 2rem;      // 32px
+
+// Pesos de fuente
+$font-normal: 400;
+$font-medium: 500;
+$font-semibold: 600;
+$font-bold: 700;
+
+// Altura de línea
+$line-height-tight: 1.25;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+
+// ================================================
+// TRANSICIONES
+// ================================================
+
+$transition-fast: 0.15s ease;
+$transition-base: 0.2s ease;
+$transition-slow: 0.3s ease;
+
+// ================================================
+// BREAKPOINTS (Responsive)
+// ================================================
+
+$breakpoint-sm: 640px;   // Móvil grande
+$breakpoint-md: 768px;   // Tablet
+$breakpoint-lg: 1024px;  // Desktop
+$breakpoint-xl: 1280px;  // Desktop grande
+
+// ================================================
+// Z-INDEX (Capas de elementos)
+// ================================================
+
+$z-dropdown: 1000;
+$z-modal: 1050;
+$z-tooltip: 1100;
+$z-notification: 1150;

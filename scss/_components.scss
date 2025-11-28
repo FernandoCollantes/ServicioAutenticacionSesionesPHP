@@ -1,0 +1,407 @@
+// ================================================
+// COMPONENTES - ELEMENTOS REUTILIZABLES
+// Estructura tipo Bootstrap Card con nombres simples
+// ================================================
+
+// ================================================
+// CONTENEDOR PRINCIPAL
+// ================================================
+
+.container {
+  @include flex-center;
+  min-height: 100vh;
+  padding: $spacing-md;
+  
+  @include responsive('md') {
+    padding: $spacing-sm;
+  }
+}
+
+// ================================================
+// SISTEMA DE CARDS (Tipo Bootstrap)
+// ================================================
+
+.card {
+  background: $bg-white;
+  border-radius: $radius-lg;
+  @include shadow('md');
+  overflow: hidden;
+  width: 100%;
+  max-width: 450px;
+  @include fade-in(0.4s);
+  
+  // Card grande (para página de bienvenida)
+  &.card-large {
+    max-width: 800px;
+  }
+  
+  // Card de error
+  &.card-error {
+    max-width: 550px;
+  }
+  
+  // Card de información (anidado)
+  &.card-info {
+    margin: $spacing-lg 0;
+    background: $bg-light;
+    border-left: 4px solid $color-primary;
+    @include shadow('sm');
+  }
+}
+
+// ================================================
+// CARD HEADER
+// ================================================
+
+.card-header {
+  padding: $spacing-xl;
+  background: $bg-lighter;
+  border-bottom: 1px solid $border-light;
+  
+  h1, h2, h3 {
+    margin: 0;
+    color: $text-dark;
+  }
+  
+  h1 {
+    font-size: $font-3xl;
+    
+    @include responsive('md') {
+      font-size: $font-2xl;
+    }
+  }
+  
+  h2 {
+    font-size: $font-2xl;
+    text-align: center;
+    
+    @include responsive('md') {
+      font-size: $font-xl;
+    }
+  }
+  
+  h3 {
+    font-size: $font-xl;
+    color: $color-primary;
+  }
+  
+  p {
+    margin: $spacing-xs 0 0 0;
+    opacity: 0.8;
+    font-size: $font-sm;
+  }
+  
+  // Header con gradiente
+  &.card-header-gradient {
+    @include gradient;
+    color: white;
+    border-bottom: none;
+    text-align: center;
+    
+    h1, h2, h3 {
+      color: white;
+    }
+    
+    p {
+      color: white;
+      opacity: 0.9;
+    }
+  }
+  
+  // Header de peligro
+  &.card-header-danger {
+    background: lighten($color-neutral, 35%);
+    border-bottom: 3px solid $color-neutral;
+    
+    h2 {
+      color: $color-neutral;
+    }
+  }
+}
+
+// ================================================
+// CARD BODY
+// ================================================
+
+.card-body {
+  padding: $spacing-xl;
+  
+  @include responsive('md') {
+    padding: $spacing-lg;
+  }
+  
+  @include responsive('sm') {
+    padding: $spacing-md;
+  }
+}
+
+// ================================================
+// CARD FOOTER
+// ================================================
+
+.card-footer {
+  padding: $spacing-lg;
+  background: $bg-lighter;
+  border-top: 1px solid $border-light;
+  
+  p {
+    margin: 0;
+    font-size: $font-sm;
+  }
+}
+
+// ================================================
+// FORMULARIOS
+// ================================================
+
+.form-group {
+  margin-bottom: $spacing-lg;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+label {
+  display: block;
+  margin-bottom: $spacing-xs;
+  color: $text-medium;
+  font-weight: $font-semibold;
+  font-size: $font-sm;
+}
+
+.form-control {
+  @include input-base;
+}
+
+// ================================================
+// BOTONES
+// ================================================
+
+.btn {
+  @include button-base;
+  
+  // Botón de bloque completo
+  &.btn-block {
+    width: 100%;
+    display: block;
+  }
+}
+
+// Botón primario
+.btn-primary {
+  @include gradient($color-primary, $color-secondary);
+  color: white;
+  @include hover-lift;
+  
+  &:hover {
+    @include gradient($primary-dark, $secondary-dark);
+  }
+}
+
+// Botón de peligro
+.btn-danger {
+  background: $color-neutral;
+  color: white;
+  @include hover-lift;
+  
+  &:hover {
+    background: $neutral-dark;
+  }
+}
+
+// Botón secundario
+.btn-secondary {
+  background: $gray-700;
+  color: white;
+  @include hover-lift;
+  
+  &:hover {
+    background: $gray-900;
+  }
+}
+
+// ================================================
+// ALERTAS
+// ================================================
+
+.alert {
+  padding: $spacing-md;
+  border-radius: $radius-md;
+  margin-bottom: $spacing-md;
+  font-size: $font-sm;
+  border-left: 4px solid;
+  
+  strong {
+    font-weight: $font-semibold;
+    display: block;
+    margin-bottom: $spacing-xs;
+  }
+  
+  // Alerta de peligro/error
+  &.alert-danger {
+    background: $bg-error;
+    color: $color-neutral;
+    border-color: $color-neutral;
+  }
+  
+  // Alerta de éxito
+  &.alert-success {
+    background: #d4edda;
+    color: $color-success;
+    border-color: $color-success;
+  }
+  
+  // Alerta de advertencia
+  &.alert-warning {
+    background: $bg-warning;
+    color: darken($color-secondary, 20%);
+    border-color: $color-secondary;
+  }
+  
+  // Alerta de información
+  &.alert-info {
+    background: $bg-info;
+    color: darken($color-primary, 20%);
+    border-color: $color-primary;
+    margin-bottom: 0;
+  }
+  
+  // Alerta de bienvenida (especial)
+  &.alert-welcome {
+    @include gradient(
+      lighten($color-primary, 35%),
+      lighten($color-secondary, 35%)
+    );
+    padding: $spacing-xl;
+    border: none;
+    text-align: center;
+    font-size: $font-lg;
+    color: $text-dark;
+    line-height: $line-height-relaxed;
+    @include shadow('sm');
+    
+    p {
+      margin: 0;
+    }
+    
+    @include responsive('sm') {
+      padding: $spacing-lg;
+      font-size: $font-base;
+    }
+  }
+}
+
+// ================================================
+// LISTA DE INFORMACIÓN
+// ================================================
+
+.info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-md 0;
+  border-bottom: 1px solid $border-light;
+  
+  &:last-child {
+    border-bottom: none;
+  }
+  
+  .label {
+    font-weight: $font-semibold;
+    color: $text-medium;
+    font-size: $font-sm;
+  }
+  
+  .value {
+    color: $text-dark;
+    font-size: $font-sm;
+    
+    // Estado activo (verde)
+    &.status-active {
+      color: $color-success;
+      font-weight: $font-semibold;
+    }
+  }
+  
+  @include responsive('md') {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $spacing-xs;
+  }
+}
+
+// ================================================
+// ACCIONES (Grupo de botones)
+// ================================================
+
+.actions {
+  display: flex;
+  gap: $spacing-md;
+  margin-top: $spacing-xl;
+  justify-content: center;
+  flex-wrap: wrap;
+  
+  @include responsive('md') {
+    flex-direction: column;
+    
+    .btn {
+      width: 100%;
+    }
+  }
+}
+
+// ================================================
+// LISTAS
+// ================================================
+
+.list {
+  list-style: disc;
+  margin: $spacing-md 0 0 $spacing-lg;
+  padding: 0;
+  text-align: left;
+  
+  li {
+    margin-bottom: $spacing-xs;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// ================================================
+// ICONOS
+// ================================================
+
+.icon-large {
+  font-size: 80px;
+  margin-bottom: $spacing-lg;
+  animation: float 3s ease-in-out infinite;
+  
+  @include responsive('sm') {
+    font-size: 60px;
+  }
+}
+
+
+
+// ================================================
+// UTILIDADES DE TEXTO
+// ================================================
+
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  color: $text-light;
+  font-size: $font-sm;
+  line-height: $line-height-relaxed;
+}

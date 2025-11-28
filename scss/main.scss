@@ -1,0 +1,112 @@
+// ================================================
+// SISTEMA DE AUTENTICACIÓN - SCSS PRINCIPAL
+// Este archivo importa todos los parciales y genera el CSS final
+// Compilar este archivo genera: css/main.css
+// ================================================
+
+// PASO 1: Importar variables (SIEMPRE primero)
+// Contiene: colores, espaciado, tipografía, breakpoints
+@import 'variables';
+
+// PASO 2: Importar mixins
+// Contiene: funciones reutilizables como flex, transition, shadow, etc.
+@import 'mixins';
+
+// PASO 3: Importar estilos base
+// Contiene: reset, tipografía base, body, links, tablas, etc.
+@import 'base';
+
+// PASO 4: Importar componentes
+// Contiene: botones, formularios, alertas, cards, etc.
+@import 'components';
+
+
+
+
+// Flexbox utilities
+.flex-center {
+  @include flex-center;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.align-center {
+  align-items: center;
+}
+
+// Anchos
+.w-full { width: 100%; }
+.w-auto { width: auto; }
+
+// Backgrounds
+.bg-primary {
+  background: $color-primary;
+  color: white;
+}
+
+.bg-light {
+  background: $bg-light;
+}
+
+.bg-white {
+  background: $bg-white;
+}
+
+// Bordes
+.rounded { border-radius: $radius-md; }
+.rounded-sm { border-radius: $radius-sm; }
+.rounded-lg { border-radius: $radius-lg; }
+.rounded-full { border-radius: $radius-full; }
+
+// Sombras
+.shadow-sm { @include shadow('sm'); }
+.shadow-md { @include shadow('md'); }
+.shadow-lg { @include shadow('lg'); }
+.shadow-none { box-shadow: none; }
+
+
+// ================================================
+// ESTADOS ESPECIALES
+// ================================================
+
+
+// Modo de impresión
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}
+
+// ================================================
+// ACCESIBILIDAD
+// ================================================
+
+// Respetar preferencia de movimiento reducido
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,248 @@
+// ================================================
+// MIXINS SCSS - FUNCIONES REUTILIZABLES
+// Los mixins son bloques de código CSS que puedes reutilizar
+// ================================================
+
+// ================================================
+// MIXIN: Flexbox centrado
+// Uso: @include flex-center;
+// ================================================
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// ================================================
+// MIXIN: Flexbox con dirección personalizable
+// Uso: @include flex($direction, $justify, $align);
+// Ejemplo: @include flex(column, space-between, flex-start);
+// ================================================
+@mixin flex($direction: row, $justify: flex-start, $align: stretch) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+// ================================================
+// MIXIN: Transiciones suaves
+// Uso: @include transition(all);
+// Uso: @include transition(transform, 0.3s);
+// ================================================
+@mixin transition($property: all, $duration: $transition-base, $timing: ease) {
+  transition: $property $duration $timing;
+}
+
+// ================================================
+// MIXIN: Sombras con variaciones
+// Uso: @include shadow('md');
+// Opciones: 'sm', 'md', 'lg', 'xl'
+// ================================================
+@mixin shadow($size: 'md') {
+  @if $size == 'sm' {
+    box-shadow: $shadow-sm;
+  } @else if $size == 'md' {
+    box-shadow: $shadow-md;
+  } @else if $size == 'lg' {
+    box-shadow: $shadow-lg;
+  } @else if $size == 'xl' {
+    box-shadow: $shadow-xl;
+  }
+}
+
+// ================================================
+// MIXIN: Hover con elevación
+// Añade efecto de elevación al hacer hover
+// Uso: @include hover-lift;
+// ================================================
+@mixin hover-lift {
+  @include transition(transform);
+  
+  &:hover {
+    transform: translateY(-2px);
+    @include shadow('lg');
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// ================================================
+// MIXIN: Responsive (Media Queries)
+// Uso: @include responsive('md') { ... }
+// Opciones: 'sm', 'md', 'lg', 'xl'
+// ================================================
+@mixin responsive($breakpoint) {
+  @if $breakpoint == 'sm' {
+    @media (max-width: $breakpoint-sm) {
+      @content;
+    }
+  } @else if $breakpoint == 'md' {
+    @media (max-width: $breakpoint-md) {
+      @content;
+    }
+  } @else if $breakpoint == 'lg' {
+    @media (max-width: $breakpoint-lg) {
+      @content;
+    }
+  } @else if $breakpoint == 'xl' {
+    @media (max-width: $breakpoint-xl) {
+      @content;
+    }
+  }
+}
+
+// ================================================
+// MIXIN: Gradiente con los colores del sistema
+// Uso: @include gradient;
+// Uso: @include gradient($color-secondary, $color-neutral);
+// ================================================
+@mixin gradient($color1: $color-primary, $color2: $color-secondary, $angle: 135deg) {
+  background: linear-gradient($angle, $color1 0%, $color2 100%);
+}
+
+// ================================================
+// MIXIN: Botón base
+// Crea la estructura base de un botón
+// Uso: @include button-base;
+// ================================================
+@mixin button-base {
+  display: inline-block;
+  padding: $spacing-md $spacing-xl;
+  border: none;
+  border-radius: $radius-md;
+  font-size: $font-base;
+  font-weight: $font-semibold;
+  font-family: $font-family-base;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  @include transition(all);
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// ================================================
+// MIXIN: Input base
+// Crea la estructura base de un input
+// Uso: @include input-base;
+// ================================================
+@mixin input-base {
+  width: 100%;
+  padding: $spacing-md;
+  border: 2px solid $border-color;
+  border-radius: $radius-md;
+  font-size: $font-base;
+  font-family: $font-family-base;
+  @include transition(border-color);
+  
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.1);
+  }
+  
+  &::placeholder {
+    color: $text-light;
+  }
+}
+
+// ================================================
+// MIXIN: Card (Tarjeta)
+// Crea una tarjeta con sombra y bordes redondeados
+// Uso: @include card;
+// ================================================
+@mixin card($padding: $spacing-lg) {
+  background: $bg-white;
+  padding: $padding;
+  border-radius: $radius-lg;
+  @include shadow('md');
+}
+
+// ================================================
+// MIXIN: Truncar texto
+// Corta el texto con puntos suspensivos
+// Uso: @include truncate;
+// ================================================
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// ================================================
+// MIXIN: Overlay (Capa superpuesta)
+// Crea una capa de color sobre un elemento
+// Uso: @include overlay(rgba(#000, 0.5));
+// ================================================
+@mixin overlay($color: rgba($color-primary, 0.8)) {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: $color;
+    z-index: 1;
+  }
+}
+
+// ================================================
+// MIXIN: Animación de aparición (Fade in)
+// Uso: @include fade-in(0.5s);
+// ================================================
+@mixin fade-in($duration: 0.3s) {
+  animation: fadeIn $duration ease-in;
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+// ================================================
+// MIXIN: Reset de lista
+// Elimina los estilos por defecto de las listas
+// Uso: @include reset-list;
+// ================================================
+@mixin reset-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+// ================================================
+// MIXIN: Aspect Ratio (Mantener proporción)
+// Uso: @include aspect-ratio(16, 9);
+// ================================================
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  
+  &::before {
+    content: '';
+    display: block;
+    padding-top: ($height / $width) * 100%;
+  }
+  
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}

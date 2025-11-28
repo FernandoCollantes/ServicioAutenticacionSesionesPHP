@@ -54,14 +54,13 @@ if ($hora_numerica >= 6 && $hora_numerica < 12) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenida - Sistema de Autenticación</title>
     <!-- ENLACE AL CSS EXTERNO -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/ServicioAutenticacionSesionesPHP/frontend/css/main.css">
 </head>
 <body>
     <div class="main-container">
         <!-- ENCABEZADO CON SALUDO -->
         <div class="page-header">
             <h1>
-                <span class="emoji">👋</span> 
                 <?php echo $saludo; ?>, <?php echo htmlspecialchars($nombre_usuario); ?>!
             </h1>
             <p><?php echo $dia_semana; ?>, <?php echo $fecha_actual; ?></p>
@@ -70,38 +69,37 @@ if ($hora_numerica >= 6 && $hora_numerica < 12) {
         <div class="content-area">
             <!-- MENSAJE DE BIENVENIDA PERSONALIZADO -->
             <div class="welcome-message">
-                <span class="emoji">🎉</span>
                 <p><?php echo htmlspecialchars($mensaje_bienvenida); ?></p>
             </div>
             
             <!-- INFORMACIÓN DE LA SESIÓN -->
             <div class="info-card">
-                <h3>📊 Información de tu sesión</h3>
+                <h3>Información de tu sesión</h3>
                 
                 <div class="info-item">
-                    <span class="info-label">👤 Usuario:</span>
+                    <span class="info-label">Usuario:</span>
                     <span class="info-value"><?php echo htmlspecialchars($nombre_usuario); ?></span>
                 </div>
                 
                 <div class="info-item">
-                    <span class="info-label">🕐 Hora actual:</span>
+                    <span class="info-label">Hora actual:</span>
                     <span class="info-value"><?php echo $hora_actual; ?></span>
                 </div>
                 
                 <div class="info-item">
-                    <span class="info-label">🚪 Inicio de sesión:</span>
+                    <span class="info-label">Inicio de sesión:</span>
                     <span class="info-value"><?php echo $hora_login; ?></span>
                 </div>
                 
                 <div class="info-item">
-                    <span class="info-label">📅 Fecha:</span>
+                    <span class="info-label">Fecha:</span>
                     <span class="info-value"><?php echo $fecha_actual; ?></span>
                 </div>
                 
                 <div class="info-item">
-                    <span class="info-label">🔐 Estado:</span>
+                    <span class="info-label">Estado:</span>
                     <span class="info-value" style="color: var(--success-color); font-weight: bold;">
-                        Autenticado ✓
+                        Autenticado 
                     </span>
                 </div>
             </div>
@@ -109,10 +107,10 @@ if ($hora_numerica >= 6 && $hora_numerica < 12) {
             <!-- ACCIONES DISPONIBLES -->
             <div class="button-group">
                 <a href="logout.php" class="btn btn-danger">
-                    🚪 Cerrar Sesión
+                    Cerrar Sesión
                 </a>
                 <a href="bienvenida.php" class="btn btn-secondary">
-                    🔄 Actualizar Hora
+                    Actualizar Hora
                 </a>
             </div>
         </div>
